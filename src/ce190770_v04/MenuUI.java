@@ -123,8 +123,8 @@ public class MenuUI {
 
                 // Prompts for and reads new availability
                 System.out.print("Enter New Availability: ");
-                input = sc.nextLine().trim().replaceAll(" +", " ");
-                int avail = input.isEmpty() ? doc.getAvailability() : InputValidation.getIntInput();
+                Integer availIn = InputValidation.getIntInputOptional();
+                int avail = (availIn == null) ? doc.getAvailability() : availIn;
 
                 // Updates doctor information
                 drDTB.updateDr(code, name, spec, avail);
