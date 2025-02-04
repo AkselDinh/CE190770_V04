@@ -18,9 +18,8 @@ public class InputValidation {
     static Scanner sc = new Scanner(System.in);
 
     /**
-     * Gets and validates integer input from user Continues to prompt until
+     * Gets and validates integer input from user. Continues to prompt until
      * valid integer is entered
-     *
      * @return valid integer input from user
      */
     public static int getIntInput() {
@@ -42,6 +41,10 @@ public class InputValidation {
         }
     }
     
+    /**
+     * Gets and validates optional integer input from user
+     * @return Integer object if valid input provided, null if empty input
+     */
     public static Integer getIntInputOptional(){
         // Loop until valid integer is entered
         while(true){
@@ -66,7 +69,10 @@ public class InputValidation {
         }
     }
 
-    // Method to validate and get doctor code input
+    /**
+     * Validates and gets doctor code input
+     * @return valid doctor code string starting with "DOC"
+     */
     public static String getDocStringInput() {
         // Continuous loop until valid input is received
         while (true) {
@@ -83,7 +89,10 @@ public class InputValidation {
         }
     }
 
-    // Method to get and validate non-empty string input
+    /**
+     * Gets and validates non-empty string input
+     * @return valid non-empty string with normalized spaces
+     */
     public static String getStringNonEmpty() {
         // Continuous loop until valid input is received
         while (true) {

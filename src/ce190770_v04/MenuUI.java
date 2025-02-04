@@ -23,7 +23,9 @@ public class MenuUI {
     // Stores the user's menu selection
     private int selection;
 
-    // Main program loop method
+    /**
+     * Main program loop method. Continues until user selects exit option
+     */
     public void loop() {
         // Initializes the doctor database
         drDTB = new DoctorDTB();
@@ -36,7 +38,9 @@ public class MenuUI {
         }
     }
 
-    // Method to handle user menu selection
+    /**
+     * Handles user menu selection and executes corresponding actions
+     */ 
     public void selection() {
         // Prompts user for input
         System.out.println("Please enter your selection: ");
@@ -67,7 +71,9 @@ public class MenuUI {
         }
     }
 
-    // Method to display main menu
+    /**
+     * Displays the main menu options to the user
+     */
     public void printMenu() {
         System.out.println("======= Doctor Management =======");
         System.out.println("\t1.Add Doctor");
@@ -77,7 +83,9 @@ public class MenuUI {
         System.out.println("\t5.Exit");
     }
 
-    // Method to add new doctor
+    /**
+     * Handles the process of adding a new doctor to the database
+     */
     public void addDoctor() {
         // Displays add doctor header
         System.out.println("------- Add Doctor -------");
@@ -101,43 +109,51 @@ public class MenuUI {
         drDTB.addDr(code, name, spec, avail);
     }
 
-    // Method to update existing doctor
+    /**
+     * Handles the process of updating an existing doctor's information
+     */
     public void updateDoctor() {
-        // Continues until valid update is completed
-        while (true) {
-            // Prompts for doctor code
-            System.out.print("Enter Doctor code to update info: ");
-            String code = InputValidation.getDocStringInput();
-            // Checks if doctor exists
-            if (drDTB.chkDrCodeExist(code)) {
-                Doctor doc = drDTB.getDr(code);
-                // Prompts for and reads new name
-                System.out.print("Enter New Name: ");
-                String input = sc.nextLine().trim().replaceAll(" +", " ");
-                String name = input.isEmpty() ? doc.getName() : input;
+        if (!drDTB.drListIsEmpty()) {
+            // Continues until valid update is completed
+            while (true) {
+                // Prompts for doctor code
+                System.out.print("Enter Doctor code to update info: ");
+                String code = InputValidation.getDocStringInput();
+                // Checks if doctor exists
+                if (drDTB.chkDrCodeExist(code)) {
+                    Doctor doc = drDTB.getDr(code);
+                    // Prompts for and reads new name
+                    System.out.print("Enter New Name: ");
+                    String input = sc.nextLine().trim().replaceAll(" +", " ");
+                    String name = input.isEmpty() ? doc.getName() : input;
 
-                // Prompts for and reads new specialization
-                System.out.print("Enter New Specialization: ");
-                input = sc.nextLine().trim().replaceAll(" +", " ");
-                String spec = input.isEmpty() ? doc.getSpecialization() : input;
+                    // Prompts for and reads new specialization
+                    System.out.print("Enter New Specialization: ");
+                    input = sc.nextLine().trim().replaceAll(" +", " ");
+                    String spec = input.isEmpty() ? doc.getSpecialization() : input;
 
-                // Prompts for and reads new availability
-                System.out.print("Enter New Availability: ");
-                Integer availIn = InputValidation.getIntInputOptional();
-                int avail = (availIn == null) ? doc.getAvailability() : availIn;
+                    // Prompts for and reads new availability
+                    System.out.print("Enter New Availability: ");
+                    Integer availIn = InputValidation.getIntInputOptional();
+                    int avail = (availIn == null) ? doc.getAvailability() : availIn;
 
-                // Updates doctor information
-                drDTB.updateDr(code, name, spec, avail);
-                System.out.println("Doctor info updated.");
-                break;
-            } else {
-                // Displays error for non-existent doctor
-                System.out.println("Doctor code does not exist, please try again.");
+                    // Updates doctor information
+                    drDTB.updateDr(code, name, spec, avail);
+                    System.out.println("Doctor info updated.");
+                    break;
+                } else {
+                    // Displays error for non-existent doctor
+                    System.out.println("Doctor code does not exist, please try again.");
+                }
             }
+        } else {
+            System.out.println("Doctor Database is empty, please add Doctor first");
         }
     }
 
-    // Method to delete doctor
+    /**
+     * Handles the process of deleting a doctor from the database
+     */
     public void deleteDoctor() {
         // Checks if database is not empty
         if (!drDTB.drListIsEmpty()) {
@@ -159,11 +175,13 @@ public class MenuUI {
             }
         } else {
             // Displays error for empty database
-            System.out.println("Database is empty.");
+            System.out.println("Doctor Database is empty, please add Doctor first");
         }
     }
 
-    // Method to search for doctors
+    /**
+     * Handles the process of searching for doctors in the database
+     */
     public void searchDoctor() {
         // Checks if database is not empty
         if (!drDTB.drListIsEmpty()) {
@@ -178,11 +196,14 @@ public class MenuUI {
             System.out.println("-----------------------------\n");
         } else {
             // Displays error for empty database
-            System.out.println("Database is empty.");
+            System.out.println("Doctor Database is empty, please add Doctor first");
         }
     }
 
-    // Method to read and validate doctor code
+    /**
+     * Reads and validates a unique doctor code
+     * @return valid and unique doctor code string
+     */
     public String readCode() {
         // Continues until valid code is entered
         while (true) {

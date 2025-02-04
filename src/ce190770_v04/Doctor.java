@@ -33,44 +33,65 @@ public class Doctor {
         this.Availability = Availability;
     }
 
-    // Method to get the doctor's code
+    /**
+     * Gets the doctor's code
+     * @return the Code value
+     */
     public String getCode() {
         // Returns the Code value
         return Code;
     }
 
-    // Method to get the doctor's name
+    /**
+     * Gets the doctor's name
+     * @return the Name value
+     */
     public String getName() {
         // Returns the Name value
         return Name;
     }
 
-    // Method to get the doctor's specialization
+    /**
+     * Gets the doctor's specialization
+     * @return the Specialization value
+     */
     public String getSpecialization() {
         // Returns the Specialization value
         return Specialization;
     }
 
-    // Method to get the doctor's availability
+    /**
+     * Gets the doctor's availability
+     * @return the Availability value
+     */
     public int getAvailability() {
         // Returns the Availability value
         return Availability;
     }
 
     // Note: no setter for Code as it shouldn't change after creation
-    // Method to set a new name for the doctor
+    /**
+     * Sets a new name for the doctor
+     * @param Name the new name to set
+     */
     public void setName(String Name) {
         // Updates the Name value with the new passed parameter
         this.Name = Name;
     }
 
-    // Method to set a new specialization for the doctor
+    /**
+     * Sets a new specialization for the doctor
+     * @param Specialization the new specialization to set
+     */
     public void setSpecialization(String Specialization) {
         // Updates the Specialization value with the new passed parameter
         this.Specialization = Specialization;
     }
 
-    // Method to set a new availability for the doctor
+    /**
+     * Sets a new availability for the doctor
+     * @param Availability the new availability to set
+     */
     public void setAvailability(int Availability) {
         // Updates the Availability value with the new passed parameter
         this.Availability = Availability;
