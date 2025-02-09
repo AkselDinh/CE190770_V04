@@ -40,7 +40,7 @@ public class MenuUI {
 
     /**
      * Handles user menu selection and executes corresponding actions
-     */ 
+     */
     public void selection() {
         // Prompts user for input
         System.out.println("Please enter your selection: ");
@@ -202,6 +202,7 @@ public class MenuUI {
 
     /**
      * Reads and validates a unique doctor code
+     *
      * @return valid and unique doctor code string
      */
     public String readCode() {

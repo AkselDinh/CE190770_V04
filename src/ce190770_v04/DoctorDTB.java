@@ -23,6 +23,7 @@ public class DoctorDTB {
 
     /**
      * Adds a new doctor to the database
+     *
      * @param code the doctor's code
      * @param name the doctor's name
      * @param spec the doctor's specialization
@@ -37,6 +38,7 @@ public class DoctorDTB {
 
     /**
      * Updates an existing doctor's information
+     *
      * @param code the doctor's code
      * @param name the new name
      * @param spec the new specialization
@@ -55,6 +57,7 @@ public class DoctorDTB {
 
     /**
      * Deletes a doctor from the database
+     *
      * @param code the code of the doctor to delete
      */
     public void deleteDr(String code) {
@@ -64,7 +67,7 @@ public class DoctorDTB {
 
     /**
      * Method to search for doctors based on input criteria
-     * 
+     *
      * @param input String of Doctor's info to be searched
      * @return List of matching search result
      */
@@ -111,11 +114,11 @@ public class DoctorDTB {
     }
 
     /**
-     *  Helper method to check if an attribute matches the search input
-     * 
+     * Helper method to check if an attribute matches the search input
+     *
      * @param attr attribute of Doctor to be compared with input
-     * @param input search String
-     * @return 
+     * @param input desired search String
+     * @return true if attribute contains input, false otherwise
      */
     public boolean matchesInput(String attr, String input) {
         // Convert attribute to lowercase and check if it contains the input
@@ -124,10 +127,11 @@ public class DoctorDTB {
 
     /**
      * Helper method to check if availability matches the search input
-     * 
+     *
      * @param availability of Doctor to be compared with input
-     * @param input search int
-     * @return 
+     * @param input desired search int
+     * @return true if availability contains input, false otherwise or by
+     * exception
      */
     public boolean matchesAvailability(int availability, String input) {
         try {
@@ -141,7 +145,7 @@ public class DoctorDTB {
 
     /**
      * Method to check if a doctor code exists in the database
-     * 
+     *
      * @param input String to be searched in database
      * @return true if found, false otherwise
      */
@@ -152,20 +156,21 @@ public class DoctorDTB {
 
     /**
      * Method to check if the doctor database is empty
-     * 
+     *
      * @return true if database is empty, false otherwise
      */
     public boolean drListIsEmpty() {
         // Return true if HashMap is empty, false otherwise
         return drList.isEmpty();
     }
-    
+
     /**
      * Gets a doctor from the database by code
+     *
      * @param code the doctor's code
      * @return the Doctor object, or null if not found
      */
-    public Doctor getDr(String code){
+    public Doctor getDr(String code) {
         return drList.get(code);
     }
 }

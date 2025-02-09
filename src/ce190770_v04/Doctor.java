@@ -21,7 +21,14 @@ public class Doctor {
     // Declares a private integer variable to store doctor's availability
     private int Availability;
 
-    // Constructor that takes 4 parameters to create a new Doctor object
+    /**
+     * Constructor that takes 4 parameters to create a new Doctor object
+     *
+     * @param Code Doctor's Code
+     * @param Name Doctor's Name
+     * @param Specialization Doctor's Specialization
+     * @param Availability Doctor's Availability
+     */
     public Doctor(String Code, String Name, String Specialization, int Availability) {
         // Assigns the passed Code parameter to the class Code variable
         this.Code = Code;
@@ -35,7 +42,8 @@ public class Doctor {
 
     /**
      * Gets the doctor's code
-     * @return the Code value
+     *
+     * @return Doctor's Code value
      */
     public String getCode() {
         // Returns the Code value
@@ -44,6 +52,7 @@ public class Doctor {
 
     /**
      * Gets the doctor's name
+     *
      * @return the Name value
      */
     public String getName() {
@@ -53,6 +62,7 @@ public class Doctor {
 
     /**
      * Gets the doctor's specialization
+     *
      * @return the Specialization value
      */
     public String getSpecialization() {
@@ -62,6 +72,7 @@ public class Doctor {
 
     /**
      * Gets the doctor's availability
+     *
      * @return the Availability value
      */
     public int getAvailability() {
@@ -72,7 +83,8 @@ public class Doctor {
     // Note: no setter for Code as it shouldn't change after creation
     /**
      * Sets a new name for the doctor
-     * @param Name the new name to set
+     *
+     * @param Name the new name to set for Doctor
      */
     public void setName(String Name) {
         // Updates the Name value with the new passed parameter
@@ -81,7 +93,8 @@ public class Doctor {
 
     /**
      * Sets a new specialization for the doctor
-     * @param Specialization the new specialization to set
+     *
+     * @param Specialization the new specialization to set for Doctor
      */
     public void setSpecialization(String Specialization) {
         // Updates the Specialization value with the new passed parameter
@@ -90,7 +103,8 @@ public class Doctor {
 
     /**
      * Sets a new availability for the doctor
-     * @param Availability the new availability to set
+     *
+     * @param Availability the new availability to set for Doctor
      */
     public void setAvailability(int Availability) {
         // Updates the Availability value with the new passed parameter
