@@ -5,6 +5,7 @@
  */
 package ce190770_v04;
 
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -65,6 +66,9 @@ public class MenuUI {
                 // Calls method to search for doctors
                 searchDoctor();
                 break;
+            case 5:
+                // Exit program
+                break;
             default:
                 // Displays error for invalid selection
                 System.out.println("Selection not exist, please choose between 1~5.");
@@ -124,22 +128,30 @@ public class MenuUI {
                     Doctor doc = drDTB.getDr(code);
                     // Prompts for and reads new name
                     System.out.print("Enter New Name: ");
+                    // Take input from console and validate
                     String input = sc.nextLine().trim().replaceAll(" +", " ");
+                    // Take validated input and adapt to doctor name
                     String name = input.isEmpty() ? doc.getName() : input;
 
                     // Prompts for and reads new specialization
                     System.out.print("Enter New Specialization: ");
+                    // Take input from console and validate
                     input = sc.nextLine().trim().replaceAll(" +", " ");
+                    // Take validated input and adapt to doctor specialization
                     String spec = input.isEmpty() ? doc.getSpecialization() : input;
 
                     // Prompts for and reads new availability
                     System.out.print("Enter New Availability: ");
+                    // Take input from console and validate
                     Integer availIn = InputValidation.getIntInputOptional();
+                    // Take validated input and adapt to doctor availability
                     int avail = (availIn == null) ? doc.getAvailability() : availIn;
 
                     // Updates doctor information
                     drDTB.updateDr(code, name, spec, avail);
+                    // Notify about changes
                     System.out.println("Doctor info updated.");
+                    // Break out of loops
                     break;
                 } else {
                     // Displays error for non-existent doctor
@@ -147,6 +159,7 @@ public class MenuUI {
                 }
             }
         } else {
+            // If user never add a doctor, notify about empty database
             System.out.println("Doctor Database is empty, please add Doctor first");
         }
     }
@@ -161,6 +174,7 @@ public class MenuUI {
             while (true) {
                 // Prompts for doctor code
                 System.out.print("Enter Doctor code to delete: ");
+                // Take input from console and validate
                 String code = InputValidation.getDocStringInput();
                 // Checks if doctor exists
                 if (drDTB.chkDrCodeExist(code)) {
@@ -189,14 +203,36 @@ public class MenuUI {
             System.out.print("Please enter words to be searched: ");
             String searchTerm = sc.nextLine();
             // Displays search results header
-            System.out.println("\n------- Search Results -------");
-            // Performs search
-            drDTB.searchDr(searchTerm);
+            System.out.println("\n------------------------ Search Results ------------------------\n");
+            // Performs search and print out table
+            printTable(drDTB.searchDr(searchTerm));
             // Displays search results footer
-            System.out.println("-----------------------------\n");
+            System.out.println("\n----------------------------------------------------------------\n");
         } else {
             // Displays error for empty database
             System.out.println("Doctor Database is empty, please add Doctor first");
+        }
+    }
+    
+    /**
+     * Take Doctor List and print out formatted table
+     * 
+     * @param lst to read data from
+     */
+    public void printTable(List<Doctor> lst){
+        // Display search results
+        if (lst.isEmpty()) {
+            // Print message if no doctors found
+            System.out.println("No doctors found.");
+        } else {
+            // Print header for results
+            System.out.printf("+ %-6s + %-18s + %-15s + %-12s +\n", "Code", "Name", "Specialization", "Availability");
+            // Iterate through matching doctors and print their details
+            for (Doctor dr : lst) {
+                // Formatted input for table
+                System.out.printf("| %-6s | %-18s | %-15s | %-12s |\n",
+                        dr.getCode(), dr.getName(), dr.getSpecialization(), dr.getAvailability());
+            }
         }
     }
 

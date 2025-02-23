@@ -95,20 +95,6 @@ public class DoctorDTB {
             }
         }
 
-        // Display search results
-        if (output.isEmpty()) {
-            // Print message if no doctors found
-            System.out.println("No doctors found.");
-        } else {
-            // Print header for results
-            System.out.println("\nFound doctors:");
-            // Iterate through matching doctors and print their details
-            for (Doctor dr : output) {
-                System.out.printf("Code: %s, Name: %s, Specialization: %s, Availability: %d\n",
-                        dr.getCode(), dr.getName(), dr.getSpecialization(), dr.getAvailability());
-            }
-        }
-
         // Return the list of matching doctors
         return output;
     }
