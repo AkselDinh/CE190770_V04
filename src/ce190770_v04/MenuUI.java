@@ -180,6 +180,7 @@ public class MenuUI {
                 if (drDTB.chkDrCodeExist(code)) {
                     // Deletes doctor and confirms
                     drDTB.deleteDr(code);
+                    // Notify about changes and break out of loops
                     System.out.println("Doctor has been deleted from database.");
                     break;
                 } else {
